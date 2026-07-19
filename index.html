@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aleia Bucci</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,700&family=Roboto+Condensed:ital,wght@0,400;0,700;1,400;1,500;1,700&family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,700&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --paper:#FFFFFF;
+    --ink:#1A1A1A;
+    --gray:#6E6E6E;
+    --accent:#C9692B;
+    --rule:#E2E2E2;
+  }
+
+  *{box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Roboto', Arial, sans-serif;
+    font-weight:300;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .label{
+    font-family:'Roboto Condensed', sans-serif;
+    letter-spacing:0.08em;
+  }
+
+  .wrap{
+    max-width:1000px;
+    margin:0 auto;
+    padding:0 48px;
+  }
+
+  /* ---------- Header / masthead ---------- */
+
+  .masthead{
+    border-bottom:2px solid var(--ink);
+    padding:56px 0 24px;
+  }
+
+  .masthead-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    font-size:11px;
+    color:var(--gray);
+    text-transform:uppercase;
+    margin-bottom:32px;
+  }
+
+  h1{
+    font-family:'Ubuntu', sans-serif;
+    font-weight:700;
+    font-size:clamp(32px, 6vw, 44px);
+    margin:0 0 8px;
+    letter-spacing:-0.01em;
+  }
+
+  .subtitle{
+    font-size:17px;
+    font-weight:400;
+    color:var(--gray);
+    margin:0 0 24px;
+    max-width:46ch;
+  }
+
+  .meta-block{
+    font-size:13px;
+    color:var(--gray);
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:4px 16px;
+    max-width:480px;
+  }
+
+  .meta-block dt{
+    font-family:'Roboto Condensed', sans-serif;
+    font-weight:700;
+    color:var(--accent);
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    font-size:10px;
+    padding-top:3px;
+  }
+
+  .meta-block dd{
+    margin:0;
+    color:var(--ink);
+  }
+
+  /* ---------- Sections ---------- */
+
+  section{
+    padding:44px 0;
+    border-bottom:1px solid var(--rule);
+  }
+
+  section:last-of-type{
+    border-bottom:none;
+  }
+
+  .section-label{
+    font-family:'Roboto Condensed', sans-serif;
+    font-size:12px;
+    font-weight:700;
+    color:var(--accent);
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    margin:0 0 12px;
+  }
+
+  h2{
+    font-family:'Ubuntu', sans-serif;
+    font-weight:700;
+    font-size:24px;
+    margin:0 0 16px;
+  }
+
+  p{
+    font-size:16px;
+    font-weight:300;
+    margin:0 0 14px;
+    max-width:64ch;
+  }
+
+  .abstract p{
+    color:#2B2B2B;
+  }
+
+  .keywords{
+    margin-top:20px;
+    font-size:13px;
+    color:var(--gray);
+  }
+
+  .keywords span{
+    font-family:'Roboto Condensed', sans-serif;
+  }
+
+  /* ---------- Numbered subsections (areas of expertise) ---------- */
+
+  .field{
+    display:grid;
+    grid-template-columns:36px 1fr;
+    gap:0 16px;
+    margin-bottom:28px;
+  }
+
+  .field:last-child{
+    margin-bottom:0;
+  }
+
+  .field-num{
+    font-family:'Roboto Condensed', sans-serif;
+    font-size:14px;
+    font-weight:700;
+    color:var(--gray);
+    padding-top:2px;
+  }
+
+  .field h3{
+    font-family:'Ubuntu', sans-serif;
+    font-size:16px;
+    font-weight:700;
+    margin:0 0 6px;
+  }
+
+  .field p{
+    font-size:14.5px;
+    color:#3A3A3A;
+    margin:0;
+  }
+
+  /* ---------- Work: case studies, expand ---------- */
+
+  .case{
+    border-top:1px solid var(--rule);
+    padding:20px 0;
+  }
+
+  .case:last-child{
+    padding-bottom:0;
+  }
+
+  .case summary{
+    cursor:pointer;
+    list-style:none;
+    display:grid;
+    grid-template-columns:110px 1fr auto;
+    gap:4px 16px;
+    align-items:baseline;
+  }
+
+  .case summary::-webkit-details-marker{
+    display:none;
+  }
+
+  .case-tag{
+    font-family:'Roboto Condensed', sans-serif;
+    font-size:11px;
+    font-weight:700;
+    color:var(--accent);
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    padding-top:3px;
+  }
+
+  .case-title{
+    font-family:'Ubuntu', sans-serif;
+    font-size:16px;
+    font-weight:700;
+    grid-column:2;
+  }
+
+  .case-toggle{
+    font-family:'Roboto Condensed', sans-serif;
+    font-size:11px;
+    color:var(--gray);
+    white-space:nowrap;
+    grid-column:3;
+  }
+
+  .case[open] .case-toggle::before{
+    content:"[ close ]";
+  }
+
+  .case:not([open]) .case-toggle::before{
+    content:"[ expand ]";
+  }
+
+  .case-body{
+    grid-column:2 / span 1;
+    margin-top:18px;
+    max-width:60ch;
+  }
+
+  .case-block{
+    margin-bottom:14px;
+  }
+
+  .case-block:last-of-type{
+    margin-bottom:16px;
+  }
+
+  .case-block-label{
+    font-family:'Roboto Condensed', sans-serif;
+    font-size:10px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--gray);
+    margin-bottom:5px;
+  }
+
+  .case-block p{
+    font-size:14.5px;
+    margin:0;
+    color:#2B2B2B;
+  }
+
+  .case-link{
+    font-family:'Roboto Condensed', sans-serif;
+    font-size:13.5px;
+    color:var(--accent);
+    text-decoration:none;
+    border-bottom:1px solid var(--accent);
+    padding-bottom:1px;
+  }
+
+  .case-link:hover,
+  .case-link:focus-visible{
+    color:var(--ink);
+    border-color:var(--ink);
+  }
+
+  @media (max-width:560px){
+    .case summary{
+      grid-template-columns:80px 1fr;
+    }
+    .case-toggle{
+      grid-column:1 / -1;
+      margin-top:4px;
+    }
+    .case-body{
+      grid-column:1 / -1;
+    }
+  }
+
+  /* ---------- Contact form ---------- */
+
+  .contact-form{
+    max-width:480px;
+    margin-bottom:28px;
+  }
+
+  .form-row{
+    margin-bottom:18px;
+  }
+
+  .form-row label{
+    display:block;
+    font-family:'Roboto Condensed', sans-serif;
+    font-size:11px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--gray);
+    margin-bottom:6px;
+  }
+
+  .form-row input,
+  .form-row textarea{
+    width:100%;
+    font-family:'Roboto', Arial, sans-serif;
+    font-size:15px;
+    font-weight:300;
+    color:var(--ink);
+    background:var(--paper);
+    border:1px solid var(--rule);
+    border-radius:0;
+    padding:10px 12px;
+    resize:vertical;
+  }
+
+  .form-row input:focus,
+  .form-row textarea:focus{
+    outline:none;
+    border-color:var(--accent);
+  }
+
+  .contact-form button{
+    font-family:'Roboto Condensed', sans-serif;
+    font-size:13px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--paper);
+    background:var(--accent);
+    border:none;
+    padding:12px 28px;
+    cursor:pointer;
+    transition:background 0.15s ease;
+  }
+
+  .contact-form button:hover,
+  .contact-form button:focus-visible{
+    background:var(--ink);
+  }
+
+  /* ---------- Contact ---------- */
+
+  .contact-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px 32px;
+    margin-top:8px;
+  }
+
+  .contact-grid a{
+    color:var(--ink);
+    text-decoration:none;
+    font-size:15px;
+    border-bottom:1px solid var(--rule);
+    padding-bottom:2px;
+    transition:border-color 0.15s ease, color 0.15s ease;
+  }
+
+  .contact-grid a:hover,
+  .contact-grid a:focus-visible{
+    border-color:var(--accent);
+    color:var(--accent);
+  }
+
+  a:focus-visible, summary:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+  }
+
+  footer{
+    padding:32px 0 56px;
+    font-family:'Roboto Condensed', sans-serif;
+    font-size:11px;
+    color:var(--gray);
+    text-align:center;
+  }
+
+  @media (max-width:520px){
+    .wrap{padding:0 20px;}
+    .masthead{padding:40px 0 16px;}
+    .meta-block{grid-template-columns:1fr;}
+    .meta-block dt{margin-top:8px;}
+    section{padding:32px 0;}
+  }
+
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="masthead-top label">
+      <span>Working Paper · No. 04</span>
+      <span>Rev. 2026</span>
+    </div>
+    <h1>Aleia Bucci</h1>
+    <p class="subtitle">Research-driven strategy for building what's next.</p>
+    <dl class="meta-block">
+      <dt>Field</dt>
+      <dd>Entrepreneurship &amp; Emerging Markets</dd>
+      <dt>Current</dt>
+      <dd>Independent research &amp; strategy · Building Safari Signal</dd>
+      <dt>Credential</dt>
+      <dd>PhD, Entrepreneurial Learning</dd>
+    </dl>
+  </header>
+
+  <section class="abstract">
+    <p class="section-label">Abstract</p>
+    <p>Research is the foundation for everything I do. Whether I am developing strategy, building a product, or designing the systems that make an organization run, it starts with getting the problem right before deciding how to solve it.</p>
+    <p>I co-founded a space startup, defining our strategic direction and closing a $10M seed round. I led research and ideation at an AI-focused venture studio, building the research infrastructure behind our work and developing over 100 product and venture concepts. I am currently building an independent research platform for planning African safaris.</p>
+    <p>I hold a PhD in entrepreneurial learning and study how entrepreneurs adapt and build ventures in resource-constrained environments. I spent nearly a decade working across the African continent and remain engaged in the region through research, publication, and PhD supervision.</p>
+    <div class="keywords">Keywords: <span>research design</span> · <span>strategy</span> · <span>product</span> · <span>operations</span> · <span>emerging markets</span></div>
+  </section>
+
+  <section>
+    <p class="section-label">Areas of Expertise</p>
+    <h2>Six working methods</h2>
+
+    <div class="field">
+      <div class="field-num">01</div>
+      <div>
+        <h3>Research Design &amp; Intelligence</h3>
+        <p>Qualitative, quantitative, and mixed-methods research. Synthesizing multi-source findings into clear conclusions. Building AI-enabled research infrastructure from the ground up.</p>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-num">02</div>
+      <div>
+        <h3>Strategy &amp; Opportunity Formation</h3>
+        <p>Identifying high-value opportunities through market and competitive analysis. Structuring ambiguous problems into prioritized direction. Go-to-market and commercialization strategy.</p>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-num">03</div>
+      <div>
+        <h3>Product &amp; Innovation Strategy</h3>
+        <p>Taking ideas from concept to validated product, with focus on frontier technology and emerging markets. Discovery, ideation, and problem-solution fit testing.</p>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-num">04</div>
+      <div>
+        <h3>Operations &amp; Organizational Infrastructure</h3>
+        <p>Building systems, processes, and team structures from scratch. Designing measurement frameworks that connect strategy to outcomes.</p>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-num">05</div>
+      <div>
+        <h3>Executive Storytelling &amp; Communication</h3>
+        <p>Framing findings for executive audiences. Building narratives that align stakeholders and drive decisions. Intelligence reports and strategic briefs.</p>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-num">06</div>
+      <div>
+        <h3>Entrepreneurship &amp; Emerging Markets Research</h3>
+        <p>Publishing original research on entrepreneurship in emerging markets. Supervising PhD and MBA students. Field research across African startup and social enterprise ecosystems.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="section-label">How I Work</p>
+    <h2>Case studies</h2>
+    <p style="font-size:14.5px; color:#3A3A3A; margin-top:-4px;">The case studies below show what my work looks like in practice across four areas: research, strategy, product, and operations.</p>
+
+    <details class="case">
+      <summary>
+        <span class="case-tag">Research</span>
+        <span class="case-title">Finding the Story in the Data</span>
+        <span class="case-toggle label"></span>
+      </summary>
+      <div class="case-body">
+        <div class="case-block">
+          <p class="case-block-label">Situation</p>
+          <p>The brief was open-ended: produce thought leadership content on the transformation happening in the US small business market.</p>
+        </div>
+        <div class="case-block">
+          <p class="case-block-label">Approach</p>
+          <p>Starting with the market rather than a hypothesis, I conducted extensive secondary research across government data, industry reports, and trade sources, drawing on two years of primary research with small business owners to ground the narrative in real examples. I identified three converging forces to build the story around: an aging owner population, accelerating AI adoption, and the collapse of barriers that had historically made small businesses difficult to serve at scale.</p>
+        </div>
+        <div class="case-block">
+          <p class="case-block-label">Outcome</p>
+          <p>A twelve-page market intelligence paper synthesizing more than forty sources into a strategic argument for why the small business technology market represents one of the most significant underappreciated opportunities in venture.</p>
+        </div>
+        <a class="case-link" href="https://www.aleiabucci.com/s/The-Next-Small-Business-Revolution.pdf" target="_blank" rel="noopener">Read the full paper →</a>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary>
+        <span class="case-tag">Strategy</span>
+        <span class="case-title">Mapping &amp; Prioritizing Markets for a Novel Technology</span>
+        <span class="case-toggle label"></span>
+      </summary>
+      <div class="case-body">
+        <div class="case-block">
+          <p class="case-block-label">Situation</p>
+          <p>Our satellite company's subsurface imaging technology had broad potential across any industry that needed to see underground, but no defined primary market.</p>
+        </div>
+        <div class="case-block">
+          <p class="case-block-label">Approach</p>
+          <p>Starting with the technology's capabilities rather than a predetermined market, I mapped the full landscape of viable industry applications, evaluating each against commercial factors (market size, willingness to pay, sales cycle, competitive intensity) and technical fit (depth, resolution, and accuracy required).</p>
+        </div>
+        <div class="case-block">
+          <p class="case-block-label">Outcome</p>
+          <p>A prioritized market roadmap sequencing entry into geophysical services first, with mining as the beachhead, expanding into water, geothermal, and infrastructure as capabilities scaled. The prioritization shaped the product roadmap, satellite build sequence, fundraising narrative, and early commercial partnerships.</p>
+        </div>
+        <a class="case-link" href="https://www.aleiabucci.com/s/Mapping-Prioritizing-Markets.pdf" target="_blank" rel="noopener">View the market opportunity map →</a>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary>
+        <span class="case-tag">Product</span>
+        <span class="case-title">From Signal to Product</span>
+        <span class="case-toggle label"></span>
+      </summary>
+      <div class="case-body">
+        <div class="case-block">
+          <p class="case-block-label">Situation</p>
+          <p>The starting point was a broad, open question about what small business owners were currently struggling with.</p>
+        </div>
+        <div class="case-block">
+          <p class="case-block-label">Approach</p>
+          <p>I conducted 100 interviews across 12 verticals, then 20 follow-up interviews focused on daily operations. I synthesized the findings into a jobs-to-be-done framework, including a key reframe: the product shouldn't be better documentation, it should be decision support delivered while work is actually happening.</p>
+        </div>
+        <div class="case-block">
+          <p class="case-block-label">Outcome</p>
+          <p>A four-day product sprint with engineering and design produced an MVP: an AI-powered operations partner built to capture how a business actually runs and deliver that knowledge to the team in real time.</p>
+        </div>
+        <a class="case-link" href="https://www.aleiabucci.com/s/From-Signal-to-Product.pdf" target="_blank" rel="noopener">View the product discovery deck →</a>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary>
+        <span class="case-tag">Operations</span>
+        <span class="case-title">Building an AI-Native Research Department</span>
+        <span class="case-toggle label"></span>
+      </summary>
+      <div class="case-body">
+        <div class="case-block">
+          <p class="case-block-label">Situation</p>
+          <p>The company was fairly new and moving quickly. Research processes were piecemeal, knowledge lived in disconnected places, and existing structures were borrowed from corporate environments that didn't fit a startup context.</p>
+        </div>
+        <div class="case-block">
+          <p class="case-block-label">Approach</p>
+          <p>I mapped out and built a new AI-native research infrastructure from the ground up: ongoing industry intelligence, primary and secondary customer research, a structured ideation process, thought leadership content, and a centralized repository with an AI-powered interface for querying it in real time.</p>
+        </div>
+        <div class="case-block">
+          <p class="case-block-label">Outcome</p>
+          <p>What started as a single research role became a fully operational research department, with a consistent shared view of the market, a structured process for evaluating ideas, and institutional knowledge to build on.</p>
+        </div>
+        <a class="case-link" href="https://www.aleiabucci.com/s/AI-Native-Research-Department.pdf" target="_blank" rel="noopener">View the framework →</a>
+      </div>
+    </details>
+  </section>
+
+  <section>
+    <p class="section-label">Contact</p>
+    <h2>Contact</h2>
+    <p style="font-size:14.5px; color:#3A3A3A; margin-top:-4px; margin-bottom:24px;">Send a message directly, or find me on LinkedIn.</p>
+
+    <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="form-row">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-row">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+      </div>
+      <button type="submit">Send</button>
+    </form>
+
+    <div class="contact-grid">
+      <a href="https://www.linkedin.com/in/aleiabucci" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </section>
+
+  <footer class="label">
+    &copy; 2026 Aleia Bucci
+  </footer>
+
+</div>
+
+</body>
+</html>
